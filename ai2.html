@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简介 - HQ</title>
+    <style>
+        /* 基础样式 */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --text-color: #333;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        /* 头部样式 */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        /* 导航菜单 */
+        nav {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        /* 主要内容区块 */
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* 技能标签 */
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>HQ</h1>
+        <p>学生 | 技术爱好者</p>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="#about">关于我</a>
+                <a href="#skills">专业技能</a>
+                <a href="#projects">项目经验</a>
+                <a href="#education">教育背景</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- 关于我 -->
+        <section id="about" class="section">
+            <h2>👋 个人简介</h2>
+            <p>目前还是学生啦，有点兴趣搞一点小项目。</p>
+        </section>
+
+        <!-- 专业技能 -->
+        <section id="skills" class="section">
+            <h2>💻 技术栈</h2>
+            <div class="skill-tags">
+                <span class="skill-tag"> HTML</span>
+                <span class="skill-tag">网页</span>
+                <span class="skill-tag">C#</span>
+                <span class="skill-tag">3</span>
+                <span class="skill-tag">4</span>
+                <span class="skill-tag">5</span>
+            </div>
+        </section>
+
+        <!-- 项目经验 -->
+        <section id="projects" class="section">
+            <h2>🎮 喜欢的游戏。</h2>
+            <div class="project">
+                <h3>Minecraft & Genshin impact</h3>
+                <p>Minecraft java版和基岩版会一点点。</p>
+                <p>原神UID304281653 👋欢迎来到我的世界啊。：-）</p>
+            </div>
+        </section>
+    </main>
+    <!-- 在<body>标签内的合适位置添加时间显示容器 -->
+        <section class="card" id="time-section">
+            <h2>时间信息</h2>
+            <div class="time-container">
+                <p>当前时间：<span id="current-time"></span></p>
+                <p>🎉小破站运行时长🎉：<span id="duration"></span></p>
+            </div>
+        </section>
+    <footer>
+        <p>© 2025 HQ - 保留所有权利</p>
+    </footer>
+    <!-- 在页面底部（</footer>之后）添加JavaScript代码 -->
+<script>
+    // 目标时间：2025年4月6日18点 (注意月份从0开始)
+    const targetDate = new Date(2025, 3, 6, 18);
+
+    function updateTime() {
+        // 获取当前时间
+        const now = new Date();
+        
+        // 格式化当前时间
+        const currentTime = now.toLocaleTimeString('zh-CN', {
+            hour12: false,
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+        
+        // 计算时间差（毫秒）
+        const diff = now - targetDate;
+        
+        // 转换毫秒为时间单位
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        // 更新DOM元素
+        document.getElementById('current-time').textContent = currentTime;
+        document.getElementById('duration').textContent = 
+            `${days}天 ${hours}小时 ${minutes}分 ${seconds}秒`;
+    }
+
+    // 初始调用
+    updateTime();
+    // 每秒更新一次
+    setInterval(updateTime, 1000);
+</script>
+
+<style>
+    /* 添加样式到现有CSS中 */
+    #time-section {
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .time-container {
+        font-size: 1.2rem;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+
+    #current-time {
+        color: #e74c3c;
+        font-weight: bold;
+    }
+
+    #duration {
+        color: #2c3e50;
+        font-family: monospace;
+    }
+</style>
+</body>
+</html>

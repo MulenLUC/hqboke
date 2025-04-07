@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HQ | 个人站点</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* 基础样式 */
+        :root {
+            --primary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            background: var(--light);
+        }
+
+        /* 头部 */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), #34495e);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid white;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        /* 导航 */
+        nav {
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        /* 主体内容 */
+        .container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        /* 项目展示 */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            min-height: 300px;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header class="hero">
+        <img src="images/avatar.jpg" alt="HQ" class="avatar">
+        <h1>HQ</h1>
+        <p>弱水三千，只取一瓢饮。</p>
+        <div class="social-links">
+            <a href="https://github.com/MulenLUC"><i class="fab fa-github"></i></a>
+            <a href="https://space.bilibili.com/666797181?spm_id_from=333.1387.follow.user_card.click"><i class="fab fa-bilibili"></i></a>
+            <a href="https://qm.qq.com/q/fZP73anB4e"><i class="fab fa-qq"></i></a>
+        </div>
+    </header>
+
+    <!-- 导航 -->
+    <nav>
+        <div class="nav-container">
+            <h2 class="logo">HQ</h2>
+            <div class="nav-links">
+                <a href="ai2.html">关于</a>
+                <a href="photos.html">照片墙</a>
+                <a href="jn.html">技能</a>
+                <a href="contact.html">联系</a>
+                <a href="xysy.html">闲言碎语</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="container">
+        <section id="about" class="card">
+            <h2>关于我</h2>
+            <p>只是普通学生啦...</p>
+        </section>
+
+        <section id="projects">
+            <h2>精选照片</h2>
+            <div class="project-grid">
+                <div class="project-card card">
+                    <img src="images/project.jpg" alt="电商系统">
+                    <h3>照片（随意拍的）</h3>
+                    <p>希望这晴空，如你的心情一样。</p>
+                </div>
+                <!-- 更多项目卡片 -->
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer style="background: var(--primary); color: white; padding: 2rem; text-align: center">
+        <p>© 2025 HQ 保留所有权利</p>
+    </footer>
+</body>
+</html>

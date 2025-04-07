@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>照片墙</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+        }
+
+        /* 基础布局 */
+        body {
+            margin: 0;
+            padding: 2rem;
+            background: var(--light);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* 网格系统 */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 统一卡片样式 */
+        .photo-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        /* 图片容器 */
+        .photo-container {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        /* 图片样式 */
+        .photo-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        /* 文字说明区域 */
+        .caption {
+            padding: 1.2rem;
+            background: rgba(255,255,255,0.9);
+            border-top: 1px solid #eee;
+        }
+
+        .caption h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .caption p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* 悬停效果 */
+        .photo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+        }
+
+        .photo-card:hover .photo-image {
+            transform: scale(1.05);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; margin-bottom: 2rem;">照片墙</h1>
+    
+    <div class="gallery">
+        <!-- 照片项1 -->
+        <div class="photo-card">
+            <div class="photo-container">
+                <img src="photos/1.jpg" alt="大桥" class="photo-image" loading="lazy">
+            </div>
+            <div class="caption">
+                <h3>雨中的虎门大桥</h3>
+                <p>2023年8月摄于东莞虎门，使用Redmi Note 12 Turbo拍摄。</p>
+            </div>
+        </div>
+
+        <!-- 照片项2 -->
+        <div class="photo-card">
+            <div class="photo-container">
+                <img src="photos/2.jpg" alt="城市夜景" class="photo-image" loading="lazy">
+            </div>
+            <div class="caption">
+                <h3>都市脉动</h3>
+                <p>深圳中心城区傍晚摄影，使用Redmi Note 12 Turbo拍摄。</p>
+            </div>
+        </div>
+
+        <!-- 更多照片项... -->
+        <div class="photo-card">
+            <div class="photo-container">
+                <img src="photos/3.jpg" alt="天坛" class="photo-image" loading="lazy">
+            </div>
+            <div class="caption">
+                <h3>天坛祈年殿</h3>
+                <p>天坛祈年殿摄影，使用Redmi Note 12 Turbo拍摄。</p>
+            </div>
+        </div>
+        <div class="photo-card">
+            <div class="photo-container">
+                <img src="photos/4.jpg" alt="骊山" class="photo-image" loading="lazy">
+            </div>
+            <div class="caption">
+                <h3>骊山</h3>
+                <p>从秦始皇博物馆遥望骊山，由OPPO A9x拍摄。</p>
+            </div>
+        </div>
+        <div class="photo-card">
+            <div class="photo-container">
+                <img src="photos/5.jpg" alt="路边风光" class="photo-image" loading="lazy">
+            </div>
+            <div class="caption">
+                <h3>路边，不经意间的夕阳。</h3>
+                <p>希望我们的故事能够继续。</p>
+            </div>
+        </div>
+    </div>
+    <footer style="background: var(--primary); color: white; padding: 2rem; text-align: center">
+        <p>© 2025 HQ 保留所有权利</p>
+        <p>投稿邮箱：3558612651@qq.com</p>
+    </footer>
+</body>
+</html>
