@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音乐收藏馆 - 听见时光的声音</title>
+    <style>
+        :root {
+            --primary: #6C9BCF;  /* 主色调 */
+            --accent: #FFB344;  /* 强调色 */
+        }
+
+        /* 音乐馆容器 */
+        .music-gallery {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem;
+        }
+
+        /* 专辑卡片 */
+        .album-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .album-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 播放控件 */
+        .player-controls {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>🎶 音乐馆</h1>
+        <a href="index.html" class="home-btn">🏠 回到主页</a>
+    </header>
+    <!-- 音乐库展示 -->
+    <section class="music-gallery">
+        <!-- 专辑1 -->
+        <div class="album-card" data-src="audio/Coldplay-Viva La Vida.mp3">
+            <img src="images/cover.jpg" alt="Viva La Vida" class="album-cover">
+            <h3>Viva La Vida</h3>
+            <p>Coldplay</p>
+            <button class="play-btn">▶️ 播放</button>
+        </div>
+        
+        <!-- 专辑2 -->
+        <div class="album-card" data-src="audio/DJ OKAWARI-Flower Dance.mp3">
+            <img src="images/cover.jpg" alt="Flower Dance" class="album-cover">
+            <h3>Flower Dance</h3>
+            <p>DJ OKAWARI</p>
+            <button class="play-btn">▶️ 播放</button>
+        </div>
+        <div class="album-card" data-src="audio/hanser-ハレハレヤ.mp3">
+            <img src="images/cover.jpg" alt="ハレハレヤ" class="album-cover">
+            <h3>ハレハレヤ</h3>
+            <p>hanser</p>
+            <button class="play-btn">▶️ 播放</button>
+        </div>
+        <div class="album-card" data-src="audio/三亩地-城南花已开.mp3">
+            <img src="images/cover.jpg" alt="城南花已开" class="album-cover">
+            <h3>城南花已开.mp3</h3>
+            <p>三亩地</p>
+            <button class="play-btn">▶️ 播放</button>
+        </div>
+        <div class="album-card" data-src="audio/Passenger-Let Her Go.mp3">
+            <img src="images/cover.jpg" alt="Let Her Go" class="album-cover">
+            <h3>Let Her Go.mp3</h3>
+            <p>Passenger</p>
+            <button class="play-btn">▶️ 播放</button>
+        </div>
+        <div class="album-card" data-src="audio/告五人-唯一.mp3">
+            <img src="images/cover.jpg" alt="唯一" class="album-cover">
+            <h3>唯一</h3>
+            <p>告五人</p>
+            <button class="play-btn">▶️ 播放</button>
+        </div>
+    </section>
+
+    <!-- 全局播放器 -->
+    <div class="player-controls">
+        <audio id="main-player" controls></audio>
+        <div class="playlist-toggle">🎵 播放列表</div>
+    </div>
+
+    <script>
+        // 音乐库数据[5,7](@ref)
+        const musicList = [
+            { title: "夏日记忆", artist: "林俊杰", src: "music/summer.mp3" },
+            { title: "星夜独白", artist: "周深", src: "music/night.mp3" }
+        ];
+
+        // 播放控制逻辑[6,7](@ref)
+        const audio = document.getElementById('main-player');
+        
+        document.querySelectorAll('.play-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const src = this.parentElement.dataset.src;
+                audio.src = src;
+                audio.play();
+                updateNowPlaying(src);
+            });
+        });
+
+        // 更新播放状态
+        function updateNowPlaying(src) {
+            const currentSong = musicList.find(song => song.src === src);
+            document.querySelector('.now-playing').innerHTML = `
+                <b>${currentSong.title}</b> - ${currentSong.artist}
+            `;
+        }
+    </script>
+</body>
+</html>
