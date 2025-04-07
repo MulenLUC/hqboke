@@ -1,4 +1,4 @@
-# hqboke
+# hqboke https://mulenluc.github.io/hqboke/
 1.个人网站（2025.4.5）bulid v1.0 
 2.更新（2025.4.6) v1.1
 3.更新维护库（2025.4.7）全面维护更新,引入照片墙以及音乐播放器（需浏览器支持）。v1.2
