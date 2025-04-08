@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>进化史&我们的万水千山</title>
+    <style>
+        :root {
+            --primary-color: #e8f4f8;
+            --secondary-color: #b8e0f4;
+            --accent-color: #89CFF0;
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), 
+                        url('images/background.jpg'); /* 替换为实际背景图URL */
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'Segoe UI', 'ヒラギノ角ゴ ProN', sans-serif;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.9);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            z-index: 1000;
+        }
+
+        .nav-toggle {
+            cursor: pointer;
+            background: var(--accent-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(137,207,240,0.4);
+        }
+
+        .main-content {
+            margin-top: 80px;
+            padding: 2rem;
+            min-height: calc(100vh - 160px);
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .era-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .footer {
+            background: rgba(255,255,255,0.9);
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* 抽屉式导航 */
+        .side-nav {
+            position: fixed;
+            left: -300px;
+            top: 60px;
+            width: 250px;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-radius: 0 15px 15px 0;
+        }
+
+        .side-nav.active {
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-toggle" onclick="toggleNav()">☰ 导航</div>
+        <button class="home-btn" onclick="location.href='index.html'">🏠 返回主页</button>
+        <button class="home-btn" onclick="location.href='ai2.html'">返回上一级</button>
+    </header>
+
+    <nav class="side-nav" id="sideNav">
+        <div class="nav-content">
+            <h3>切换</h3>
+            <ul>
+                <li onclick="showContent('era1')">🌌 创世纪元 (1991-1995)</li>
+                <li onclick="showContent('era2')">🚀 探索时代 (1996-2000)</li>
+                <li onclick="showContent('era3')">🎨 美学革命 (2001-2010)</li>
+                <li onclick="showContent('thanks')">💌 致谢：我们的万水千山</li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="timeline" id="contentArea">
+            <!-- 动态加载内容 -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 HQ· 探索无限可能的数字宇宙</p>
+    </footer>
+
+    <script>
+        // 导航切换
+        function toggleNav() {
+            document.getElementById('sideNav').classList.toggle('active');
+        }
+
+        // 内容切换
+        const contentMap = {
+            era1: `<div class="era-card">
+                    <h2>🌌 创世v1.0</h2>
+                    <p>2025.4.5建立首个网站，纯文本的宇宙初现...</p>
+                    <div class="animate-bubble"></div>
+                   </div>`,
+            era2: `<div class="era-card">
+                    <h2>🚀 探索时代v1.1 2025.4.6</h2>
+                    <p>Flash动画带来视觉革命，个人主页如繁星涌现...</p>
+                   </div>`,
+                   era3: `<div class="era-card">
+                    <h2>美学革命1.2 2025.4.8</h2>
+                    <p>得益于ai帮助网站的美学革命正以前所未有的速度重塑数字世界的视觉格局。</p>
+                    <p>场革命以极简主义为核心哲学，通过去冗余化的设计语言将用户注意力精准聚焦于核心内容</p>
+                   </div>`,
+            thanks: `<div class="era-card">
+                        <h2>💌 我的致谢</h2>
+                        <p>感谢开源社区的光芒，感谢ai工具，致敬每位数字先驱...</p>
+                        <p>但是，我想说的还是，记录我们一起走过的万水千山，这也许就是网站的初衷。</p>
+                        <p>你驻足于春色之中，于那独一无二的春色之中。</p>
+                        <p>编辑于2025年春</p>
+                     </div>`
+        };
+
+        function showContent(id) {
+            document.getElementById('contentArea').innerHTML = contentMap[id];
+            toggleNav();
+        }
+
+        // 初始化显示第一个时代
+        showContent('era1');
+
+        // 动态背景效果
+        document.addEventListener('DOMContentLoaded', () => {
+            const createStar = () => {
+                const star = document.createElement('div');
+                star.style.cssText = `
+                    position: fixed;
+                    background: rgba(137,207,240,${Math.random()*0.5});
+                    width: ${Math.random()*3}px;
+                    height: ${Math.random()*3}px;
+                    border-radius: 50%;
+                    top: ${Math.random()*100}vh;
+                    left: ${Math.random()*100}vw;
+                    animation: twinkle ${2 + Math.random()*3}s infinite;
+                `;
+                document.body.appendChild(star);
+            }
+
+            for(let i=0; i<50; i++) createStar();
+        });
+    </script>
+</body>
+</html>
